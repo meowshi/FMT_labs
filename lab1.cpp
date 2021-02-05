@@ -19,7 +19,7 @@ int main(){
             case 'c':
             case 'C': chioce_c();
                 break;
-            default: cout << "Wrong choice!\n";
+            default: cout << "Choose a, b, c or q!\n";
         }
     }
 }
