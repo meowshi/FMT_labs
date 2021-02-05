@@ -5,7 +5,7 @@ void choice_b(void);
 void choice_c(void);
 
 void choice_a(){
-    for (int i = 0; i < 5; i++){
+    for (int i = 0; i < 6; i++){
         std::cout << i + 1 << ". a.\n";
     }
 }
