@@ -1,5 +1,5 @@
 #include <iostream>
-#include "lab1_lib.h"
+#include "lab0_1_lib.h"
 
 using namespace std;
 
