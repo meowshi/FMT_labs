@@ -8,7 +8,7 @@ int main(){
     cout << "a) 6 times 'a'    b) everything is simple\n";
     cout << "c) don't choose   q) quit\n";
     char choice;
-    while (cin >> choice && choice != 'e'){
+    while (cin >> choice && choice != 'q'){
         switch (choice){
             case 'a':
             case 'A': choice_a();
