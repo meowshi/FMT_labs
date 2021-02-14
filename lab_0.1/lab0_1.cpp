@@ -1,12 +1,12 @@
 #include <iostream>
-#include "lab1_lib.h"
+#include "lab0_1_lib.h"
 
 using namespace std;
 
 int main(){
     cout << "Choose...\n";
     cout << "a) 6 times 'a'    b) everything is simple\n";
-    cout << "c) don't choose   e) exit\n";
+    cout << "c) don't choose   q) quit\n";
     char choice;
     while (cin >> choice && choice != 'e'){
         switch (choice){
