@@ -1,6 +1,6 @@
 #include <iostream>
 #include "lab0_1_lib.h"
-
+// Комментарий для слияния
 using namespace std;
 
 int main(){
