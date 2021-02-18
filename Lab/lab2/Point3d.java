@@ -49,7 +49,7 @@ public class Point3d {
         }
         return false;
     }
-    // Возвращает расстояния от точки до точки
+    // Возвращает расстояние от точки до точки
     public double distanceTo(Point3d p){
         return Math.sqrt(Math.pow(this.xCoord - p.xCoord, 2) + Math.pow(this.yCoord - p.yCoord, 2) + Math.pow(this.zCoord - p.zCoord, 2));
     }

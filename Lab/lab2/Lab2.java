@@ -1,5 +1,5 @@
 import java.util.Scanner;
-// Коласс второй лабораторной работы
+// Класс второй лабораторной работы
 public class Lab2 {
     public static void main(String[] args) {
         // инициализация сканера
@@ -20,19 +20,19 @@ public class Lab2 {
             System.out.println("Area of triangle = " + String.format("%.2f",computeArea(point1, point2, point3)));
         }
         else{
-            // Сообщение об ошибочнов вводе
+            // Сообщение об ошибочном вводе
             System.out.println("Error! Wrong input!");
         }
     }
     // Рассчет площади треугольника по трем точкам
     public static double computeArea(Point3d point1, Point3d point2, Point3d point3){
-        // Рассчет первой стороны
+        // Расчет первой стороны
         double a = point1.distanceTo(point2);
-        // Рассчет второй стороны
+        // Расчет второй стороны
         double b = point2.distanceTo(point3);
-        // Рассчет тертьей стороны
+        // Расчет третьей стороны
         double c = point3.distanceTo(point1);
-        // Рассчет полупериметра
+        // Расчет полупериметра
         double p = 0.5 * (a + b + c);
         // Возврат площади треугольника
         return Math.sqrt(p * (p - a) * (p - b) * (p - c));
