@@ -24,7 +24,7 @@ public class Lab2 {
             System.out.println("Error! Wrong input!");
         }
     }
-    // Рассчет площади треугольника по трем точкам
+    // Расчет площади треугольника по трем точкам
     public static double computeArea(Point3d point1, Point3d point2, Point3d point3){
         // Расчет первой стороны
         double a = point1.distanceTo(point2);
