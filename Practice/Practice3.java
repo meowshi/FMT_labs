@@ -1,3 +1,4 @@
+// Класс третьей практической работы
 public class Practice3 {
     // Задание 1
     public static int solution(int a, int b, int c) {
@@ -22,7 +23,7 @@ public class Practice3 {
         }
         // Если было два вхождения возвращаем индекс "z"
         if (count == 2) return i - 1;
-        // Иначе -1
+        // иначе -1
         return -1;
     }
     // Задание 3
@@ -39,7 +40,7 @@ public class Practice3 {
         // Проверяем равна ли сумма number
         // Если да - возвращаем true
         if (sum == number) return true;
-        // Иначе - false
+        // иначе - false
         return false;
     }
     // Задание 4
@@ -48,11 +49,11 @@ public class Practice3 {
         if (str.length() < 2) {
             return "Incompatible";
         }
-        // Иначе, если первый и послежний символы строки равны, возвращаем "два - это пара"
+        // иначе, если первый и послежний символы строки равны, возвращаем "два - это пара"
         else if (str.charAt(0) == str.charAt(str.length() - 1)) {
             return "Two's a pair";
         }
-        // Иначе
+        // иначе
         // Новая строка
         String newStr = "";
         // Добавляет в начало последний элемент исходной строки
@@ -69,7 +70,7 @@ public class Practice3 {
     public static boolean isValidHexCode(String code) {
         // Если первый символ не "#" или длина кода не равна 7, возвращаем false
         if (code.charAt(0) != '#' || code.length() != 7) return false;
-        // Иначе проверяем каждый символ на соответствие нужным промежуткам
+        // иначе проверяем каждый символ на соответствие нужным промежуткам
         // Если не соответствует, возвращаем false
         for (int i = 1; i < code.length(); i++) {
             if (code.charAt(i) >= '0' && code.charAt(i) <= '9' || code.charAt(i) >= 'A' && code.charAt(i) <= 'F' || code.charAt(i) >= 'a' && code.charAt(i) <= 'f') {
@@ -118,7 +119,7 @@ public class Practice3 {
         }
         // Если кол-ва уникальных элементов равны, возвращаем true
         if (count1 == count2) return true;
-        // Иначе false
+        // иначе false
         return false;
     }
     // Задание 7
@@ -139,7 +140,7 @@ public class Practice3 {
         int right = numberSqr % (int)Math.pow(10, numberSqrLenght / 2 + numberSqrLenght % 2);
         // Если выполняется условие числа Капекара, возвращаем true
         if (left + right == number) return true;
-        // Иначе - false
+        // иначе - false
         return false;
     }
     // Задание 8
@@ -160,7 +161,7 @@ public class Practice3 {
                 }
                 continue;
             }
-            // Иначе обнуляем count, потому что встретилась 1
+            // иначе обнуляем count, потому что встретилась 1
             count = 0;
         }
         // Возвращаем строку нулей
@@ -194,7 +195,7 @@ public class Practice3 {
             // Максимальным становится y
             max = y;
         }
-        // Иначе прибавляем к сумме квадрат y
+        // иначе прибавляем к сумме квадрат y
         else sum += y * y;
         // Та же самая проверка с z
         if (max < z) {
@@ -204,7 +205,7 @@ public class Practice3 {
         else sum += z * z;
         // Если квадрат гипотенузы равен сумме квадратов катетов, возвращаем true
         if (max * max == sum) return true;
-        // Иначе - false
+        // иначе - false
         return false;
     }
 }
