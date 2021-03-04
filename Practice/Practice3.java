@@ -81,7 +81,7 @@ public class Practice3 {
         return true;
     }
     // Задание 6
-    private static boolean same(int arr1[], int arr2[]) {
+    public static boolean same(int arr1[], int arr2[]) {
         // Количество элементов первого массива
         int count1 = 0;
         // Количество элементов второго массива
