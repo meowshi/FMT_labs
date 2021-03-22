@@ -5,7 +5,7 @@ import javax.swing.*;
 public class JImageDisplay extends JComponent {
     private BufferedImage bufferedImage;
     public JImageDisplay(int width, int height) {
-        bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_BGR);
+        bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         super.setPreferredSize(new Dimension(width, height));
     }
 
