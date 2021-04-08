@@ -2,18 +2,28 @@ import java.util.*;
 
 public class Practice4 {
     public static String sevenBoom(int arr[]) {
+        String number;
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == 7) {
-                return "Boom";
+            number = Integer.toString(arr[i]);
+            for (int j = 0; j < number.length(); j++) {
+                if (number.charAt(j) == '7') {
+                    return "Boom";
+                }
             }
         }
         return "There is no 7 in the array";
     }
     public static boolean cons(int arr[]) {
         Arrays.sort(arr);
-        for (int i = 1; i < arr.length - 2; i++) {
-            if (!(arr[i+1] - arr[i] == arr[i] - arr[i-1] 
-            && arr[i] != arr[i-1] && arr[i] != arr[i+1])) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] == arr[j]) {
+                    return false;
+                }
+            }
+        }
+        for (int i = 1; i < arr.length - 1; i++) {
+            if (!(arr[i+1] - arr[i] == arr[i] - arr[i-1])) {
                 return false;
             }
         }
@@ -21,8 +31,11 @@ public class Practice4 {
     }
     public static String unmix(String string) {
         String rightString = "";
-        for (int i = 0; i < string.length() - 2; i += 2) {
-            rightString += string.charAt(i + 1) + string.charAt(i);
+        for (int i = 0; i < string.length() - 1; i += 2) {
+            rightString += "" + string.charAt(i + 1) + string.charAt(i);
+        }
+        if (string.length() % 2 == 1) {
+            rightString += "" + string.charAt(string.length() - 1);
         }
         return rightString;
     }
@@ -49,6 +62,9 @@ public class Practice4 {
                 else {
                     newString += "cks";
                 }
+            }
+            else {
+                newString += string.charAt(i);
             }
         }
         return newString;
