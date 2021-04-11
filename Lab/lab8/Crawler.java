@@ -19,8 +19,8 @@ public class Crawler {
     }
 
     private void analys() {
-        while (Thread.activeCount() > 1 && Thread.activeCount() <= maxThreadsCount || unchecked.size() > 0)
-            if (unchecked.size() > 0) {
+        while (Thread.activeCount() > 1 || unchecked.size() > 0)
+            if (unchecked.size() > 0 && Thread.activeCount() <= maxThreadsCount) {
                 CrawlerTask thread = new CrawlerTask();
                 thread.run();
             }
@@ -51,7 +51,6 @@ public class Crawler {
                 String line;
                 while ((line = br.readLine()) != null) {
                     if (line.contains(protocol) && udp.getDepth() + 1 <= depth) {
-                        System.out.println(line);
                         unchecked.add(new URLDepthPair(getURL(line), udp.getDepth() + 1));
                     }
                 }
