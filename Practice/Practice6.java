@@ -1,7 +1,6 @@
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Practice6 {
     public static String hiddenAnagram(String string1, String string2) {
@@ -232,28 +231,6 @@ public class Practice6 {
         if (resultStr.charAt(resultStr.length() - 1) == ' ') resultStr.deleteCharAt(resultStr.length() - 1);
         return resultStr.toString();
     }
-
-    // public static String generateNonconsecutive(int n) {
-    //     StringBuilder number = new StringBuilder();
-    //     for ( int i = 0; i < n; i++ ) number.append('0');
-    //     StringBuilder resultStr = new StringBuilder();
-    //     resultStr.append(number.toString());
-    //     resultStr.append(' ');
-    //     for ( int i = n - 1; i > -1; i-- ) {
-    //         StringBuilder numberCopy = new StringBuilder(number);
-    //         numberCopy.setCharAt(i, '1');
-    //         resultStr.append(numberCopy);
-    //         resultStr.append(' ');
-    //         for ( int j = n - 1; j > i; j-- ) {
-    //             if ( numberCopy.charAt(j - 1) != '1' && ((j + 1 < n && numberCopy.charAt(j + 1) != '1') || !(j+1 < n))) {
-    //                 numberCopy.setCharAt(j, '1');
-    //                 resultStr.append(numberCopy.toString());
-    //                 resultStr.append(' ');
-    //             }
-    //         }
-    //     }
-    //     return resultStr.toString();
-    // }
     public static String generateNonconsecutive(int n) {
         // начальное число 0 повторенное n раз
         StringBuilder number = new StringBuilder();

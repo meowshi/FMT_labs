@@ -24,7 +24,7 @@ public class Crawler {
                 BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
                 String line;
                 while ((line = br.readLine()) != null) {
-                    if (line.contains(protocol) && udp.getDepth() + 1 <= depth) {
+                    if (line.contains("href=\"" + protocol) && udp.getDepth() + 1 <= depth) {
                         unchecked.add(new URLDepthPair(getURL(line), udp.getDepth() + 1));
                     }
                 }

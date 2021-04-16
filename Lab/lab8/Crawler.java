@@ -1,29 +1,24 @@
-import java.util.*;
 import java.net.*;
 import java.io.*;
 
 public class Crawler {
-
-    private LinkedList<URLDepthPair> checked = new LinkedList<>();
-    private LinkedList<URLDepthPair> unchecked = new LinkedList<>();
-    
     private final String protocol = "http://";
 
     private int depth;
     private int maxThreadsCount;
-    
-    public Crawler(String url, int d, int n) {
+    private URLPool poolik;
+
+    public Crawler(URLPool pool, int d, int n) {
         depth = d;
-        unchecked.add(new URLDepthPair(url, 0));
         maxThreadsCount = n;
+        poolik = pool;
     }
 
     private void analys() {
-        while (Thread.activeCount() > 1 || unchecked.size() > 0)
-            if (unchecked.size() > 0 && Thread.activeCount() <= maxThreadsCount) {
-                CrawlerTask thread = new CrawlerTask();
-                thread.run();
-            }
+        for (int i = 0; i < maxThreadsCount; i++) {
+            Thread thread = new Thread(new CrawlerTask(poolik), "" + i);
+            thread.start();
+        }
     }
 
     public String getURL(String string) {
@@ -35,28 +30,30 @@ public class Crawler {
         return newURL.toString();
     }
 
-    public void showUDP() {
-        for ( int i = 0; i < checked.size(); i++ ) {
-            System.out.println(checked.get(i).toString());
-        }
-    }
-
     private class CrawlerTask implements Runnable {
+        private URLPool pool;
+
+        public CrawlerTask(URLPool pool_) {
+            pool = pool_;
+        }
+        
         @Override
         public void run() {
-            try {
-                URLDepthPair udp = unchecked.pop();
-                URL url = new URL(udp.getURL());
-                BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-                String line;
-                while ((line = br.readLine()) != null) {
-                    if (line.contains(protocol) && udp.getDepth() + 1 <= depth) {
-                        unchecked.add(new URLDepthPair(getURL(line), udp.getDepth() + 1));
+            while (true) {
+                try {
+                    URLDepthPair udp = pool.getUnchecked(maxThreadsCount);
+                    URL url = new URL(udp.getURL());
+                    BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        if (line.contains("href=\"" + protocol) && udp.getDepth() + 1 <= depth) {
+                            pool.addUncheked(new URLDepthPair(getURL(line), udp.getDepth() + 1));
+                        }
                     }
+                    pool.addChecked(udp);
+                } catch (Exception e) {
+                    System.out.println(e);
                 }
-                checked.add(udp);
-            } catch (Exception e) {
-                System.out.println(e);
             }
         } 
     }
@@ -65,10 +62,13 @@ public class Crawler {
             System.out.println("args != 3");
             System.exit(1);
         }
+        URLPool pool = new URLPool(new URLDepthPair(args[0], 0));
         try {
-            Crawler crawler = new Crawler(args[0], Integer.parseInt(args[1]), Integer.parseInt(args[2]));
+            Crawler crawler = new Crawler(pool, Integer.parseInt(args[1]), Integer.parseInt(args[2]));
             crawler.analys();
-            crawler.showUDP();
+            while (pool.getWaiting() != crawler.maxThreadsCount);
+            pool.showUDP();
+            System.exit(0);
         } catch (Exception e) {
             System.out.println(e);
             System.exit(1);
